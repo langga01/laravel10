@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">{{ $tittle }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -60,10 +60,37 @@
                             <td>{{ $d->name }}</td>
                             <td>{{ $d->email }}</td>
                             <td>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('user.edit',['id' => $d->id]) }}" class="btn btn-primary"> <i class="fa-solid fa-pen"></i></a>
+                                <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
-                      </tr>
+                            <div class="modal fade" id="modal-hapus{{ $d->id }}">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Hapus Data</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Apakah ingin menghapus data <b>{{ $d->name }}</b> ?</p>
+                                    <br>
+                                    <p>Data yang dihapus tidak bisa dikembalikan</p>
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                    <form action="{{ route('user.delete',['id' => $d->id]) }}" method="POST">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                        </tr>
                         @endforeach
                     </tbody>
                   </table>

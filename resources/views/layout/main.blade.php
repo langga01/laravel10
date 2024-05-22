@@ -42,10 +42,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{{ route('index') }}" class="nav-link">User</a>
       </li>
     </ul>
 
@@ -899,5 +899,7 @@
 <script src="{{ asset ('lte/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset ('lte/dist/js/pages/dashboard.js') }}"></script>
+{{-- icon --}}
+<script src="https://kit.fontawesome.com/a2ff0d878a.js" crossorigin="anonymous"></script>
 </body>
 </html>

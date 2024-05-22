@@ -24,12 +24,13 @@
 
     <section class="content">
       <div class="container-fluid">
-        <form action="{{ route('user.store') }}" method="POST">
+        <form action="{{ route('user.update', ['id' => $data->id]) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">Tambah User</h3>
+                      <h3 class="card-title">{{ $tittle }}</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -37,14 +38,14 @@
                       <div class="card-body">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Enter email">
+                          <input type="email" class="form-control" name="email" value="{{ $data->email }}" id="exampleInputEmail1" placeholder="Enter email">
                           @error('email')
                               <small> {{ $message }} </small>
                           @enderror
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Nama</label>
-                          <input type="text" class="form-control" name="nama" id="exampleInputEmail1" placeholder="Name">
+                          <input type="text" class="form-control" name="nama" value="{{ $data->name }}" id="exampleInputEmail1" placeholder="Name">
                           @error('nama')
                               <small> {{ $message }} </small>
                           @enderror
@@ -59,8 +60,9 @@
                       </div>
                       <!-- /.card-body -->
       
-                      <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                      <div class="card-footer d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary mx-auto">Submit</button>
+                            <a href="{{ route('index') }}" class="btn btn-outline-warning mx-auto">Batal</a>
                       </div>
                     </form>
                   </div>
