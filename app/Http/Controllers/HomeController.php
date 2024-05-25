@@ -37,11 +37,11 @@ class HomeController extends Controller
 
         $data['email']=$request->email;
         $data['name']=$request->nama;
-        $data['password']=Hash::make($request->email);
+        $data['password']=Hash::make($request->password);
 
         User::create($data);
 
-        return redirect()->route('index');
+        return redirect()->route('admin.index');
         // dd($request->all());
     }
 
@@ -66,12 +66,12 @@ class HomeController extends Controller
             $data['name']=$request->nama;
 
             if($request->password){
-                $data['password']=Hash::make($request->email);
+                $data['password']=Hash::make($request->password);
             }
     
             User::whereId($id)->update($data);
     
-            return redirect()->route('index');
+            return redirect()->route('admin.index');
     }
 
     public function delete(Request $request, $id) {
@@ -81,6 +81,6 @@ class HomeController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('index');
+        return redirect()->route('admin.index');
     }
 }

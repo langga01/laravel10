@@ -607,3 +607,9 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+@if ($message = Session::get('success'))
+    <script>
+      Swal.fire('{{ $message }}');
+    </script>
+@endif

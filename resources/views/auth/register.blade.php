@@ -19,15 +19,26 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="{{ route('login') }}" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{ route('register') }}" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Halaman Register</p>
 
-      <form action="{{ route('login-proses') }}" method="post">
+      <form action="{{ route('register-proses') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
+          <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ old('nama') }}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        @error('nama')
+            <small>{{ $message }}</small>
+        @enderror
+        <div class="input-group mb-3">
+          <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -49,17 +60,9 @@
             <small>{{ $message }}</small>
         @enderror
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -67,14 +70,6 @@
 
       
       <!-- /.social-auth-links -->
-
-      {{-- <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p> --}}
-      <p class="mb-0">
-        Belum Punya Akun ? 
-        <a href="{{ route('register') }}" class="text-center"> Daftar </a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>
