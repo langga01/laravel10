@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">{{ $tittle }}</li>
             </ol>
           </div><!-- /.col -->
@@ -21,6 +21,9 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <div class="container-fluid">
+      <h5 class="mb-4">Selamat datang di Halaman perofile {{ $data->name }}</h5>
+    </div>
 
     <section class="content">
       <div class="container-fluid">
@@ -36,6 +39,13 @@
                     <!-- form start -->
                     <form>
                       <div class="card-body">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Photo Profile</label>
+                          <input type="file" class="form-control" name="photo" id="exampleInputEmail1">
+                          @error('photo')
+                              <small> {{ $message }} </small>
+                          @enderror
+                        </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
                           <input type="email" class="form-control" name="email" value="{{ $data->email }}" id="exampleInputEmail1" placeholder="Enter email">
@@ -62,7 +72,7 @@
       
                       <div class="card-footer d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary mx-auto">Submit</button>
-                            <a href="{{ route('index') }}" class="btn btn-outline-warning mx-auto">Batal</a>
+                            <a href="{{ route('admin.index') }}" class="btn btn-outline-warning mx-auto">Batal</a>
                       </div>
                     </form>
                   </div>

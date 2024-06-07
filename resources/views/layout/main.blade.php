@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css')}}">
+  {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" /> --}}
+  @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -42,7 +44,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('admin.index') }}" class="nav-link">User</a>
@@ -185,10 +187,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('storage/photo-user/'.Auth::user()->image) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Harus Diubah</a>
+          <a href="{{ route('admin.user.edit',['id' => Auth::user()->id]) }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -291,5 +293,8 @@
 <script src="{{ asset ('lte/dist/js/pages/dashboard.js') }}"></script>
 {{-- icon --}}
 <script src="https://kit.fontawesome.com/a2ff0d878a.js" crossorigin="anonymous"></script>
+{{-- <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script> --}}
+
+@yield('scripts')
 </body>
 </html>

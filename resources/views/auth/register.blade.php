@@ -64,6 +64,10 @@
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block">Daftar</button>
           </div>
+          <p class="my-2 mx-auto">
+            Sudah Punya Akun ? 
+            <a href="{{ route('login') }}" class="text-center"> Login </a>
+          </p>
           <!-- /.col -->
         </div>
       </form>

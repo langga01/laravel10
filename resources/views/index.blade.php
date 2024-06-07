@@ -1,5 +1,7 @@
 @extends('layout.main')
-
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+@endsection
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -27,12 +29,15 @@
             <div class="col-12">
                 <a href="{{ route('admin.user.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
               <div class="card">
-                <div class="card-header">
+                
+                {{-- search --}}
+                {{-- <div class="card-header">
                   <h3 class="card-title">Table User</h3>
-  
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <form action="{{ route('admin.index') }}">
+                      <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ $request->get('search') }}">
+                    </form>
   
                       <div class="input-group-append">
                         <button type="submit" class="btn btn-default">
@@ -41,22 +46,27 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
+                {{-- end search --}}
+
+
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                  <table class="table table-hover text-nowrap">
+                  <table class="table table-hover text-nowrap display" id="tableplus">
                     <thead>
                       <tr>
                         <th>No</th>
+                        <th>Photo</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $d)
+                        {{-- @foreach ($data as $d)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ asset('storage/photo-user/'.$d->image) }}" alt="" height="50"></td>
                             <td>{{ $d->name }}</td>
                             <td>{{ $d->email }}</td>
                             <td>
@@ -91,7 +101,7 @@
                               <!-- /.modal-dialog -->
                             </div>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                   </table>
                 </div>
@@ -103,5 +113,53 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
 </div>
+@section('scripts')
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+
+<script>
+  $(document).ready( function () {
+    loadData();
+  } );
+
+  function loadData(){
+    $('#tableplus').DataTable({
+      processing:true,
+      pagination:true,
+      responsive:true,
+      serverside:true,
+      searching:true,
+      ordering:false,
+      ajax:{
+        url:'{{ route('admin.index') }}',
+      },
+      columns:[
+        {
+          data : 'no',
+          name : 'no',
+        },
+        {
+          data : 'photo',
+          name : 'photo',
+        },
+        {
+          data : 'nama',
+          name : 'nama',
+        },
+        {
+          data : 'email',
+          name : 'email',
+        },
+        {
+          data : 'action',
+          name : 'action',
+        },
+      ],
+    });
+  }
+</script>
 @endsection
+
+@endsection
+
