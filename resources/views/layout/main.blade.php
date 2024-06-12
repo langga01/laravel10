@@ -49,6 +49,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('admin.index') }}" class="nav-link">User</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('admin.spbe') }}" class="nav-link">SPBE</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->

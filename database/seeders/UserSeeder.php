@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(2000)->create();
+        // User::factory(2000)->create();
 
         User::create([
             'name'=>'Erlangga',

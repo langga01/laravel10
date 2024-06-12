@@ -37,6 +37,7 @@ Route::post('/register-proses',[LoginController::class, 'register_proses'])->nam
 
 Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin.'], function(){
     Route::get('/',[HomeController::class,'dashboard'])->name('dashboard');
+    Route::get('/spbe',[HomeController::class,'spbe'])->name('spbe');
     Route::get('/user',[HomeController::class,'index'])->name('index');
     Route::get('/create',[HomeController::class,'create'])->name('user.create');
     Route::post('/store',[HomeController::class,'store'])->name('user.store');
