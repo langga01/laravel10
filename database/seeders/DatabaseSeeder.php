@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Domain;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(100)->create();
+        // \App\Models\User::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Domain::create([
+            'name' => 'Kebijakan'
+        ]);
+        Domain::create([
+            'name' => 'Tata Kelola'
+        ]);
+        Domain::create([
+            'name' => 'Manajemen'
+        ]);
+        Domain::create([
+            'name' => 'Layanan'
+        ]);
     }
 }

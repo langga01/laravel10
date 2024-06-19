@@ -19,12 +19,12 @@ class HomeController extends Controller
         // dd(Auth::user());
         return view('dashboard');
     }
-    public function spbe()
-    {
-        $domains = Domain::get();
+    // public function spbe()
+    // {
+    //     $domains = Domain::get();
 
-        return view('spbe', ['domains' => $domains]);
-    }
+    //     return view('spbe/spbe', ['domains' => $domains]);
+    // }
 
     public function index(Request $request)
     {
